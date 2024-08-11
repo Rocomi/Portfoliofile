@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>웹 문서 구조</title>
+
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        div {
+            box-sizing: border-box;
+            /* border: 1px solid gray; */
+        }    
+
+        body {
+            font-family: Arial, sans-serif;
+        }
+        /** 전체를 감싸는 div 영역 */
+        .wrap {
+            
+            width: 100%;
+            min-width: 1500px;
+            height: 3600px;
+            min-height: 500px;
+            margin: auto;
+        }
+
+        /** 3가지 영역 (#header, #content, #footer) */
+        /* #header, #content, #footer {} */
+        .wrap > div {
+            width: 100%;
+        }
+
+        #header {
+            position: relative;
+            height: 100px; 
+            background-color: #111; 
+            float: left; 
+            padding-left: 10px; 
+            padding-top: 10px;
+            box-shadow: 0px 0px 30px;
+        }
+        #content {
+            height: calc(100% - 200px);
+            z-index: 10;
+        }
+        #footer {
+            height: 100px; 
+            padding-top: 8px; 
+            box-shadow: 0px 0px 30px #111;
+        }
+
+        #content > div {height: 100%; float: left;}
+
+        #content1> div {
+            height: 20%;
+        }
+
+
+        #content1_1, #content1_3, #content1_5 {
+            background-color: #555;
+        }
+        #content1_2, #content1_4 {
+            background-color: #999;
+            padding-right: 50%;
+        }
+        
+        
+        
+
+        /* #content1, #content3 { width: 20%;}
+        #content2 { width: 60%;} */
+        #content1 { 
+            width: calc(100% - 100px);
+            text-shadow: 0px 0px 20px black;
+            color: #ddd;
+        }
+        #content2 { width: 100px; background-color: #111; text-align: center; padding-top: 30px;}
+
+        /*********************************************************************프로필*************/
+    
+        #profile {
+            border: 1px solid #fff;
+            border-radius: 50%; 
+            width: 100px;
+            height: 90%;
+            float: left;
+            background-color: #fff;
+            color: #999;
+            
+            box-shadow: 0px 0px 2cap #fdfdfd49;
+        }
+        #profile-name {
+            width: 200px;
+            height: 100%;
+            float: left;
+            color: #fff;
+            display: flex;
+
+            justify-content: start;
+            align-items: end;
+        }
+
+        /*****************************************************************네비게이터*****************/
+        ul, li {
+            list-style-type: none; 
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            text-decoration: none;
+            color: lightgray;   
+            font-weight: bold;
+        }
+
+        #navigator {
+            height: 100%;
+            display: flex;
+            padding-right: 5%;
+        }
+        div {
+            /* border: 1px solid; */
+            box-sizing: border-box;
+            justify-content:right;
+        }
+
+        #nav {
+            height: 100%;
+        }
+        #nav > li { 
+            float: left;
+            width: 100px;
+            height: 100%;
+            text-align: center;
+            padding-top: 30px;
+        }
+
+        #nav > li:nth-child(5) {
+            padding-right: 50px;
+        }
+
+        #nav a {
+            font-size: 18px;
+            font-weight: 900;
+            width: 100%;
+            height: 100%;
+
+            display: block;
+            /* vertical-align: middle; */
+            line-height: 35px;
+        }
+
+        #nav a:hover {
+            color: chartreuse;
+            scale: 1.08;
+        }
+
+        #nav>li>ul {
+            display: none;
+            position: relative;
+        }
+
+        #nav > li > a:hover + ul {
+            display: block;
+            z-index: 99;
+        }
+
+        #nav > li > ul:hover {
+            display: block;
+        }
+        /*******************************************************************************************/
+
+        /***********************************************************푸터영역**************  *******/
+        #footer {
+            width: 100%;
+            height: 250px;
+            background-color: #111;
+            box-sizing: border-box;
+        }
+
+        #footer > div {
+            width: 100%;
+            padding-left: 30px;
+            text-align: center;
+        }
+        #footer1 {height: 90%; padding-top: 100px; }
+        #footer2 {height: 10%; }
+        #footer1 > a {
+            text-decoration: none;
+            color: #000;
+            font-size: 12px;
+            font-weight: bold;
+            margin: 15px;
+       }
+       #sns {
+            padding-top: 5px;
+            display: flex;
+            justify-content: space-evenly;
+       }
+
+       #sns-info {
+            color: #fff;
+            display: flex;
+            justify-content: space-evenly;
+       }
+
+       #footer2>p {
+            width: 100%;
+            box-sizing: border-box;
+            margin: 0;
+            font-size: 12px;
+            color: #656565;           
+       }
+       
+       #p2 {
+        text-align:center;
+       }
+
+        /*******************************************************************************************/
+
+        /*****************************************************************바디 영역**************************/
+        #content1_1 {
+            background-image: url("./resources/introduce.jpg");
+            background-repeat: no-repeat; 
+            background-size: 300px 350px; 
+            background-position: 5% 40%; 
+            background-attachment: fixed; 
+            box-shadow: 0px 0px 10px #fff;
+        }
+        #content1_2 {
+            background-image: url("./resources/myphoto-file.jpg");
+            background-repeat: no-repeat; 
+            background-size: 300px 350px; 
+            background-position: 80% 40%; 
+            background-attachment: fixed; 
+        }
+        #content1_3 {
+            background-image: url("./resources/hobby-drum.jpg.webp");
+            background-repeat: no-repeat; 
+            background-size: 300px 350px; 
+            background-position: 5% 40%; 
+            background-attachment: fixed; 
+        }
+        #content1_4 {
+            background-image: url("./resources/cat.jpg");
+            background-repeat: no-repeat; 
+            background-size: 300px 350px; 
+            background-position: 80% 40%; 
+            background-attachment: fixed; 
+        }
+        #content1_5 {
+            background-image: url("./resources/JAVA.jpg");
+            background-repeat: no-repeat; 
+            background-size: 300px 350px; 
+            background-position: 5% 40%; 
+            background-attachment: fixed; 
+        } 
+
+        #content2 {
+            background-image: url("./resources/sidebar.jpg");
+            background-repeat: no-repeat; 
+            background-size: 80px; 
+            background-position: 99.5% 30%; 
+            background-attachment: fixed; 
+        }
+       
+        #content1_1 > pre {float: left; padding-left: 5%; padding-top: 10%; width: 60%;}
+        #content1_2 > pre {float: left; padding-top: 10%; width: 60%;}
+        #content1_3 > pre {float: left; padding-left: 5%; padding-top: 5%; width: 60%;}
+        #content1_4 > pre {float: left; padding-top: 10%; width: 60%;}
+        #content1_5 > pre {float: left; padding-left: 5%; padding-top: 5%; width: 60%;}
+
+        #slider > img { width: 10px;}
+
+        img {
+            box-shadow: 0px 0px 20px black;
+        }
+        video {
+            box-shadow: 0px 0px 20px black;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="wrap">
+        
+        <div id="header">
+            <!---------------------------------------------------헤더영역 프로필 설정 -------------------------->
+            
+                <div id="profile">
+                <img src="./resources/profile.jpg.webp" width="100%" height="100%" style="border-radius: 50%;">
+                </div>
+                <div id="profile-name">
+                    <h1><i>HY_Eom</i></h1>
+                </div>
+                
+            
+            <!-- -----------------------------------------헤더 영역의 나비게이터 설정--------------------------------- -->
+            <div id="navigator">
+                <ul id="nav">
+                    <li><a href="#content1_1">자기소개</a></li>
+                    <li><a href="#content1_2">발자취</a></li>
+                    <li><a href="#content1_3">취미</a></li>
+                    <li><a href="#content1_4">고양이</a></li>
+                    <li><a href="#content1_5">개발</a></li>
+                    <li><a href="">MENU</a>
+                        <ul>
+                            <li><a href="#content1_5" onclick="startPortfolio()">HOME</a></li>
+                            <li><a href="#content1_5">PROFILE</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+            <!-- -------------------------------------------------------------------------------------------------------- -->
+
+        </div>
+        <div id="content">
+            <div id="content1">
+                <div id="content1_1">
+                    <pre>
+                        <h1>
+                            이름 : 엄희윤
+                            
+                            생년월일 : 951014
+
+                            전공 : 울산의대/의과학/면역치료학
+
+                            특이사항 : 생긴거랑 안어울림
+                        </h1>
+                    </pre>
+
+                    <div class="slider">
+                        <img src="./resources/me-1.jpg" class="slide" alt="Image 1" width="200px">
+                        <img src="./resources/me-2.jpg" class="slide" alt="Image 2" width="250px">
+                        <img src="./resources/me-3.jpg" class="slide" alt="Image 3" width="270px">
+                    </div>
+                </div>
+                <div id="content1_2">
+                    <div>
+
+                    </div>
+                    <pre>
+                        <h1>
+                            경력사항
+                        </h1>
+                        <h4>
+                            1995.10 - 출생 
+
+
+                            2015.02 - 영남대학교 의생명공학과 입학
+
+
+                            2016.05 - 대한민국 해병대 입대
+
+
+                            2019.02 - 영남대학교 면역치료연구실 연구원등록
+
+
+                            2020.02 - 울산의과대학교 의과학과 면역치료전공 입학
+
+
+                            2022.08 - 서울아산병원(잠실) 생명과학연구소 암면역치료 연구
+
+
+                            2024.06 - KH 정보교육원 수강생
+                        </h4>
+                    </pre>
+                    
+                </div>
+                <div id="content1_3">
+                    <pre>
+                        <h1>
+                            취 미
+                        </h1>
+                        <h1>
+                            스노우 보드 - 강사자격증 KISA-Lv.1
+
+                            드럼 - 경력 16년, 매년 정기공연 계획
+
+                            게임 - 롤(플래티넘), 배그(한때 그마)
+
+
+                            etc. 클라이밍, 기타, 바이올린, 사격, ...
+                        </h1>
+                    </pre>
+                    <div>
+                        <img src="./resources/img.jpg" width="200px";>
+                        <video src="./resources/snow.mp4" controls loop
+                        height="420"></video>
+                        <video src="./resources/drum.mp4" controls loop
+                        width="450"></video>
+                    </div>
+                </div>
+                <div id="content1_4">
+                    <div>
+                        여기 이미지 띄워야함
+                    </div>
+                    <pre>
+                        <h1>
+                            ♥우리집 내새꾸들♥
+                        </h1>
+                        <h2>
+                            이름 : 로미                         코비
+
+                            성별 : 여(중성화)                   여(중성화)
+
+                            나이 : 2년-8개월                    2년-0개월
+
+                            성격 : 세상에 노관심                세계최강 말괄량이, 호기심쟁이
+
+                            취미 : 어슬렁, 쥐인형가지고 놀기     우다다, 언니 괴롭히기
+
+                        </h2>
+                    </pre>
+                    
+                </div>
+                <div id="content1_5">
+                    <pre>
+                        <h1>
+                                 -- 현재까지 만든 코드 --
+
+
+                            JAVA 쉬는시간 타이머 제작
+
+                            제약회사 홈페이지 JAVA 콘솔화면 구현
+
+                            제약회사 홈페이지 SQL DATABASE 연동
+
+                            포트폴리오 UI 제작
+                        </h1>
+                    </pre>
+                    <div>
+                        <img src="./resources/code-1.jpg" width="300px">
+                        <img src="./resources/code-2.jpg" height="350px">
+                        <img src="./resources/code-3.jpg" width="300px">
+                        <img src="./resources/code-4.jpg" width="300px">
+                    </div>
+                </div>
+            </div>
+            <div id="content2">
+                
+            </div>
+        </div>
+
+        <div id="footer">
+
+            <div id="footer1">
+                <div id="sns">
+                <a href="https://www.instagram.com/_hy_eom/"><img src="./resources/instagram.jpg" height="50px" style="border-radius: 50%;"></a>
+                <a href="https://www.facebook.com/heeyun.eom/"><img src="./resources/facebook.jpg" height="50px" style="border-radius: 50%;"></a>
+                <a href="https://github.com/Rocomi"><img src="./resources/git.jpg" height="50px" style="border-radius: 50%;"></a>
+                <a href="https://kauli1014.tistory.com/"><img src="./resources/Tstory.jpg" height="50px" style="border-radius: 50%;"></a>
+                </div>
+                <div id="sns-info">
+                    <a href="https://www.instagram.com/_hy_eom/">&nbsp;&nbsp;Instagram</a>
+                    <a href="https://www.facebook.com/heeyun.eom/">Facebook&nbsp;</a>
+                    <a href="https://github.com/Rocomi">Git-Hub&nbsp;&nbsp;&nbsp;</a>
+                    <a href="https://kauli1014.tistory.com/">T-Story&nbsp;&nbsp;&nbsp;</a>
+                </div>
+            </div>
+
+            <div id="footer2">
+                <p>
+                    Copyright &copy; 1995-2024 HEE-YUN Individual All Right Reserved
+                </p>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function startPortfolio() {
+            window.location.href = "https://rocomi.github.io/Portfolio";  // 포트폴리오 페이지로 이동
+        }
+    </script>
+
+</body>
+</html>
